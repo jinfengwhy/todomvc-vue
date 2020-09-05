@@ -18,6 +18,17 @@
 	// 	}
 	// ]
 
+	// 注册一个全局自定义指令 `v-focus`
+	Vue.directive('focus', {
+		// 当被绑定的元素插入到 DOM 中时
+		inserted: function (el) {
+			// focus 较为特殊，一定要写在 inserted 中
+			// inserted 和 bind 一样只执行一次
+			// 聚焦元素 
+			el.focus()
+		}
+	})
+
 	window.app = new Vue({
 		data: {
 			todos: JSON.parse(window.localStorage.getItem('todos') || '[]'),
