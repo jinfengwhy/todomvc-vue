@@ -4,6 +4,10 @@
 
 * [TodoMVC](http://todomvc.com/)
 
+## 需求说明
+
+* [TodoMVC 需求说明](https://github.com/tastejs/todomvc/blob/master/app-spec.md)
+
 ## 开始
 
 ### [TodoMVC 模板仓库](https://github.com/tastejs/todomvc-app-template)
