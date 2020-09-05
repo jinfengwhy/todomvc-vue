@@ -21,7 +21,8 @@
 	new Vue({
 		data: {
 			// 下面写法等同于 todos: todos 属于 ES 6 简写方式
-			todos
+			todos,
+			currentEditing: null
 		},
 		methods: {
 			handleNewTodoKeyDown (e) {
@@ -59,6 +60,10 @@
 			// 如 handleRemoveTodoClick(index, $event) 形参的顺序不重要，但 $event 变量名不能变
 			handleRemoveTodoClick (index, e) {
 				this.todos.splice(index, 1)
+			},
+
+			handleGetEditingDblclick (item) {
+				this.currentEditing = item
 			}
 		}
 	}).$mount('#app')
