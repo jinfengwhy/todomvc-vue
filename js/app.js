@@ -37,7 +37,7 @@
 				}
 				const todos = this.todos
 				todos.push({
-					id: todos[todos.length - 1] + 1,
+					id: todos.length ? todos[todos.length - 1] + 1 : 1,
 					title: value,
 					completed: false
 				})
