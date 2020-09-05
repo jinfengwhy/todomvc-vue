@@ -18,10 +18,9 @@
 		}
 	]
 
-	new Vue({
+	window.app = new Vue({
 		data: {
-			// 下面写法等同于 todos: todos 属于 ES 6 简写方式
-			todos,
+			todos: JSON.parse(window.localStorage.getItem('todos') || '[]'),
 			currentEditing: null
 		},
 		// 计算属性是 Vue 的一大特色
@@ -46,6 +45,19 @@
 						item.completed = checked
 					})
 				}
+			}
+		},
+		watch: {
+			// 监视 todos 的改变，当 todos 发生变化的时候做业务定制处理
+			// 引用类型只能监视一层，无法检测内部子成员的变动，因此需要深度监视
+			todos: {
+				// 当监视到 todos 发生变化的时候，会自动执行 handler 方法
+				// 你监视的是谁，val 就是谁，val 是变化后的最新值
+				handler (val) {
+					// 也可以使用 this.todos 代替 val
+					window.localStorage.setItem('todos', JSON.stringify(val))
+				},
+				deep: true // 深度监视，文档都有说明
 			}
 		},
 		methods: {

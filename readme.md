@@ -94,3 +94,5 @@ npm start
     * 模板逻辑
     * 方法
     * 计算属性
+
+### 将数据持久化到 localStorage 中
