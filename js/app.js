@@ -80,6 +80,10 @@
 				}
 				todo.title = value
 				this.currentEditing = null
+			},
+
+			handleCancelEditEsc () {
+				this.currentEditing = null
 			}
 		}
 	}).$mount('#app')
