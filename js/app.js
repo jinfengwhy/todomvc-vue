@@ -32,7 +32,7 @@
 				// 3. 添加到 todos 
 				// 4. 清空文本框
 				const target = e.target
-				const value = target.value
+				const value = target.value.trim()
 				if (!value.length) {
 					return
 				}
@@ -64,6 +64,22 @@
 
 			handleGetEditingDblclick (item) {
 				this.currentEditing = item
+			},
+
+			handleSaveEditKeydown (todo, index, e) {
+				// 0. 注册 enter 键按下的事件
+				// 1. 拿到文本框中的值
+				// 2. 数据校验
+				//		如果为空，则删除
+				//		如果非空，保存，并清除 editing 样式
+				const target = e.target
+				const value = target.value.trim()
+
+				if (!value.length) {
+					return this.todos.splice(index, 1)
+				}
+				todo.title = value
+				this.currentEditing = null
 			}
 		}
 	}).$mount('#app')

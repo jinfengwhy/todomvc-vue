@@ -50,7 +50,11 @@
 									@click="handleRemoveTodoClick(index, $event)"
 									class="destroy"></button>
 							</div>
-							<input class="edit" value="Rule the web">
+							<!-- 编辑模式下按 esc 键不保存，所以这里采用单向数据绑定 -->
+							<input 
+								@keydown.enter="handleSaveEditKeydown(item, index, $event)"
+								@blur="handleSaveEditKeydown(item, index, $event)"
+								class="edit" :value="item.title">
 						</li>
 					</ul>
 				</section>
