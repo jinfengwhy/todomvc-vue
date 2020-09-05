@@ -29,7 +29,13 @@
 		// 它是一种带有行为的属性，本质是方法，但不能作为方法来调用，只能当做属性来使用
 		computed: {
 			remainingCount () {
-				return this.todos.filter( t => !t.completed).length
+				return this.todos.filter(t => !t.completed).length
+			},
+			toggleAllStat: {
+				get () {
+					// 数组中的元素每一个都满足条件，则返回 true
+					return this.todos.every(t => t.completed)
+				}
 			}
 		},
 		methods: {
