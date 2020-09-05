@@ -20,9 +20,12 @@
 			<template v-if="todos.length">
 				<!-- This section should be hidden by default and shown when there are todos -->
 				<section class="main">
-					<input 
+					<!-- <input 
 						@change="handleToggleAllChange"
 						:checked="toggleAllStat"
+						id="toggle-all" class="toggle-all" type="checkbox"> -->
+					<input 
+						v-model="toggleAllStat"
 						id="toggle-all" class="toggle-all" type="checkbox">
 					<label for="toggle-all">Mark all as complete</label>
 					<ul class="todo-list">

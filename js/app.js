@@ -33,8 +33,18 @@
 			},
 			toggleAllStat: {
 				get () {
-					// 数组中的元素每一个都满足条件，则返回 true
+					// 计算属性知道它依赖了 todos
+					// 所以 todos 发生变化时，会被重新计算
+					// every 方法：数组中的元素每一个都满足条件，则返回 true
 					return this.todos.every(t => t.completed)
+				},
+				set (status) {
+					// checkbox 双向绑定该变量
+					// 等价于下面这行代码 checked = !this.toggleAllStat 
+					const checked = status
+					this.todos.forEach(item => {
+						item.completed = checked
+					})
 				}
 			}
 		},
