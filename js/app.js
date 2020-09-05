@@ -24,6 +24,14 @@
 			todos,
 			currentEditing: null
 		},
+		// 计算属性是 Vue 的一大特色
+		// 它是为了解决模板过重及重复调用的问题的，计算属性可以缓存计算的结果
+		// 它是一种带有行为的属性，本质是方法，但不能作为方法来调用，只能当做属性来使用
+		computed: {
+			remainingCount () {
+				return this.todos.filter( t => !t.completed).length
+			}
+		},
 		methods: {
 			handleNewTodoKeyDown (e) {
 				// 0. 注册 enter 键按下的事件
