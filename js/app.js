@@ -84,6 +84,11 @@
 
 			handleCancelEditEsc () {
 				this.currentEditing = null
+			},
+
+			handleClearAllDoneClick () {
+				// 满足条件的数据元素会被过滤出来重新赋值给 todos
+				this.todos = this.todos.filter(t => !t.completed)
 			}
 		}
 	}).$mount('#app')

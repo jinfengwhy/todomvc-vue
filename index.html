@@ -76,7 +76,12 @@
 						</li>
 					</ul>
 					<!-- Hidden if no completed items are left ↓ -->
-					<button class="clear-completed">Clear completed</button>
+					<!-- some 函数，数组中的元素只要有一个满足该条件，则返回 true -->
+					<!-- 与之对应的 every 函数，数组中的所有元素都满足该条件，才返回 true -->
+					<button
+						v-if="todos.some(t => t.completed)"
+						@click="handleClearAllDoneClick"
+						class="clear-completed">Clear completed</button>
 				</footer>
 			</template>
 		</section>
