@@ -1,19 +1,58 @@
-# TodoMVC App Template
+# TodoMVC
 
-> Template used for creating [TodoMVC](http://todomvc.com) apps
+## 案例介绍
 
-![](https://github.com/tastejs/todomvc-app-css/raw/master/screenshot.png)
+* [TodoMVC](http://todomvc.com/)
+
+## 开始
+
+### [TodoMVC 模板仓库](https://github.com/tastejs/todomvc-app-template)
+
+1. 下载模板
+
+```shell
+# --depth 表示只下载最后一次 commit
+git clone https://github.com/tastejs/todomvc-app-template.git todomvc-vue --depth=1
+```
+
+2. 安装依赖 
+
+```shell
+cd todomvc-vue/
+npm install
+```
+
+### 配置 [browser-sync](http://www.browsersync.cn/) 浏览器同步测试工具
+
+1. 安装依赖
+
+```shell
+# 也可以 npm install -D browser-sync 
+# --save-dev(简写 -D) 表示安装包到 devDependencies(应用于开发环境) 选项中
+npm install --save-dev browser-sync
+```
+
+2. 配置 scripts
+
+```shell
+# 启动服务，监听当前目录下的 .html 文件，css 目录下 .css 文件，js 目录下 .js 文件的变动
+# 如果有变动，则浏览器自动刷新
+"scripts": {
+    "dev": "browser-sync start --server --files \"*.html, css/*.css, js/*.js\"",
+    "start": "npm run dev"
+}
+```
+
+3. 启动开发服务
+
+```shell
+# npm start 相当于是给 npm run dev 命令起了个别名，也可以 npm run dev
+# 而 npm run dev 则会执行 scripts 对象中 dev 对应的那条命令
+npm start
+```
 
 
-## Getting started
-
-- Read the [Application Specification](https://github.com/tastejs/todomvc/blob/master/app-spec.md) before touching the template.
-
-- Delete this file and rename `app-readme.md` to `readme.md` and fill it out.
-
-- Clone this repo and install the dependencies with [npm](https://npmjs.com) by running: `npm install`.
 
 
-## License
 
-<a rel="license" href="http://creativecommons.org/licenses/by/4.0/deed.en_US"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/4.0/80x15.png" /></a><br />This <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/InteractiveResource" rel="dct:type">work</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://sindresorhus.com" property="cc:attributionName" rel="cc:attributionURL">TasteJS</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/deed.en_US">Creative Commons Attribution 4.0 International License</a>.
+
