@@ -42,6 +42,16 @@
 					completed: false
 				})
 				target.value = ''
+			},
+
+			handleToggleAllChange (e) {
+				// 0. 注册 checkbox 的 change 事件
+				// 1. 获取 checkbox 的选中状态
+				// 2. 循环设置 todos 中任务项的 completed 的状态
+				const checked = e.target.checked
+				this.todos.forEach(item => {
+					item.completed = checked
+				})
 			}
 		}
 	}).$mount('#app')
