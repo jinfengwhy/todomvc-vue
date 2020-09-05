@@ -29,6 +29,16 @@
 		}
 	})
 
+	// 注册一个全局指令，用于双击编辑任务项时文本框获取焦点
+	Vue.directive('todo-focus', {
+		update (el, binding) {
+			console.log(binding)
+			if (binding.value) {
+				el.focus()
+			}
+		}
+	})
+
 	window.app = new Vue({
 		data: {
 			todos: JSON.parse(window.localStorage.getItem('todos') || '[]'),
