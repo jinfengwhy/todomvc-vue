@@ -1,27 +1,28 @@
 // 匿名函数自执行
 ;(function () {
-	const todos = [
-		{
-			id: 1,
-			title: '吃饭',
-			completed: true 
-		},
-		{
-			id: 2,
-			title: '上课',
-			completed: false 
-		},
-		{
-			id: 3,
-			title: '写代码',
-			completed: false 
-		}
-	]
+	// const todos = [
+	// 	{
+	// 		id: 1,
+	// 		title: '吃饭',
+	// 		completed: true 
+	// 	},
+	// 	{
+	// 		id: 2,
+	// 		title: '上课',
+	// 		completed: false 
+	// 	},
+	// 	{
+	// 		id: 3,
+	// 		title: '写代码',
+	// 		completed: false 
+	// 	}
+	// ]
 
 	window.app = new Vue({
 		data: {
 			todos: JSON.parse(window.localStorage.getItem('todos') || '[]'),
-			currentEditing: null
+			currentEditing: null,
+			filterText: 'all'
 		},
 		// 计算属性是 Vue 的一大特色
 		// 它是为了解决模板过重及重复调用的问题的，计算属性可以缓存计算的结果
@@ -44,6 +45,20 @@
 					this.todos.forEach(item => {
 						item.completed = checked
 					})
+				}
+			},
+
+			filterTodos () {
+				switch (this.filterText) {
+					case 'active': {
+						return this.todos.filter(t => !t.completed)
+					}
+					case 'completed': {
+						return this.todos.filter(t => t.completed)
+					}
+					default: {
+						return this.todos
+					}
 				}
 			}
 		},
@@ -128,4 +143,15 @@
 			}
 		}
 	}).$mount('#app')
+
+	// 监听哈希 change 事件
+	window.onhashchange = handlehashchange
+
+	// 为了让页面第一次进入时获取哈希值，手动调用一次
+	handlehashchange()
+
+	function handlehashchange () {
+		window.app.filterText = window.location.hash.substr(2)
+	}
+
 })()
