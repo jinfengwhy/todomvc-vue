@@ -52,6 +52,13 @@
 				this.todos.forEach(item => {
 					item.completed = checked
 				})
+			},
+
+			// 事件处理函数在没有传参的情况下，默认第一个参数是 event: 事件源对象
+			// 如果传参的话，则没办法自动拿到 event: 事件源对象，除非手动的传递 $event 对象
+			// 如 handleRemoveTodoClick(index, $event) 形参的顺序不重要，但 $event 变量名不能变
+			handleRemoveTodoClick (index, e) {
+				this.todos.splice(index, 1)
 			}
 		}
 	}).$mount('#app')
