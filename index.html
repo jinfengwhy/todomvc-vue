@@ -13,7 +13,9 @@
 		<section class="todoapp" id="app">
 			<header class="header">
 				<h1>todos</h1>
-				<input class="new-todo" placeholder="What needs to be done?" autofocus>
+				<input 
+					@keydown.enter="handleNewTodoKeyDown"
+					class="new-todo" placeholder="What needs to be done?" autofocus>
 			</header>
 			<template v-if="todos.length">
 				<!-- This section should be hidden by default and shown when there are todos -->
