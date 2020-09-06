@@ -11,10 +11,8 @@
 	</head>
 	<body>
 		<!-- 入口结点，将该 Dom 结构挂载到全局 Vue 实例上，由它来进行管理 -->
-		<div id='app'>
-			<!-- 使用 main.js 中 Vue 实例下注册的局部组件 App -->
-			<app></app>
-		</div>
+		<!-- 但如果全局 Vue 实例，定义了 template 属性，则该 Dom 结构会被替换掉 -->
+		<div id='app'></div>
 		
 		<script src="node_modules/todomvc-common/base.js"></script>
 		<script src="js/todo-header.js"></script>

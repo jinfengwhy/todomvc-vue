@@ -1,7 +1,8 @@
 ;(function () {
 
+	// 这里添加了 id 属性，是为了方便进行 dom 操作
 	const template = `
-		<div>
+		<div id="app">
 			<section class="todoapp">
 				<todo-header></todo-header>
 				<todo-list></todo-list>
