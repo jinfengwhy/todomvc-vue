@@ -22,7 +22,7 @@
 	const template = `
 		<div id="app">
 			<section class="todoapp">
-				<todo-header></todo-header>
+				<todo-header :todos="todos"></todo-header>
 				<todo-list :list="todos"></todo-list>
 				<todo-footer></todo-footer>
 			</section>
