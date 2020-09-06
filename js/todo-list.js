@@ -4,7 +4,7 @@
             <input id="toggle-all" class="toggle-all" type="checkbox">
             <label for="toggle-all">Mark all as complete</label>
             <ul class="todo-list">
-                <li v-for="item in list" :class="{completed: item.completed}">
+                <li v-for="item in filterTodos" :class="{completed: item.completed}">
                     <div class="view">
                         <input class="toggle" type="checkbox" v-model="item.completed">
                         <label>{{ item.title }}</label>
@@ -18,7 +18,23 @@
 
     window.todoList = {
         template,
-        props: ['list']
+        props: ['list', 'filterText'],
+        computed: {
+            filterTodos () {
+                switch (this.filterText) {
+                    case 'active': {
+                        return this.list.filter(t => !t.completed)
+                    }
+                    case 'completed': {
+                        return this.list.filter(t => t.completed)
+                    }
+                    default: {
+                        return this.list
+                    }
+                }
+            }
+        }
+
     }
 
 })()

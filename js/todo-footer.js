@@ -6,13 +6,13 @@
             <!-- Remove this if you don't implement routing -->
             <ul class="filters">
                 <li>
-                    <a class="selected" href="#/">All</a>
+                    <a :class="{selected: filterText === 'all'}" href="#/">All</a>
                 </li>
                 <li>
-                    <a href="#/active">Active</a>
+                    <a :class="{selected: filterText === 'active'}" href="#/active">Active</a>
                 </li>
                 <li>
-                    <a href="#/completed">Completed</a>
+                    <a :class="{selected: filterText === 'completed'}" href="#/completed">Completed</a>
                 </li>
             </ul>
             <!-- Hidden if no completed items are left ↓ -->
@@ -21,6 +21,7 @@
     `
 
     window.todoFooter = {
-        template
+        template,
+        props: ['filterText']
     }
 })()
