@@ -22,7 +22,9 @@
 	const template = `
 		<div id="app">
 			<section class="todoapp">
-				<todo-header :todos="todos"></todo-header>
+				<!-- 父组件订阅（监听）了子组件的 addItem 事件 -->
+				<!-- 当父组件监听到事件触发时，就会去执行 addTask 方法 -->
+				<todo-header @addItem="addTask"></todo-header>
 				<todo-list :list="todos"></todo-list>
 				<todo-footer></todo-footer>
 			</section>
@@ -37,6 +39,22 @@
 			}
 		},
 		template,
+		methods: {
+			// 父组件并不关心数据是从哪里来的（纯业务方向的代码）
+			addTask (text) {
+				const title = text.trim()
+				if (!title.length) {
+					return
+				}
+
+				const todos = this.todos
+                todos.push({
+                    id: todos[todos.length - 1].id + 1,
+                    title: title,
+                    completed: false
+                })
+			}
+		},
 		components: {
 			// ES 6 简写方式
 			todoHeader,

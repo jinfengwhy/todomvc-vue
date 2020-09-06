@@ -12,7 +12,6 @@
     // 在页面上就体现为一个自定义的 html 标签
     // 组件是对视图的拆分、而模块化是对 js 的拆分
     window.todoHeader = {
-        props: ['foo', 'todos'],
         template: template,
 
         methods: {
@@ -37,6 +36,11 @@
                 // 数组和对象都属于是引用类型，引用类型可以如上面那般修改，但非常不建议这样做
                 // 子组件中对于父组件中的数据，只能使用，不能修改
                 // this.todos = []
+
+                // 发射 addItem 事件，同时传递需要的参数
+                // 如果父组件有订阅（监听）addItem 事件，则父组件就能捕获到子组件要添加任务项这个消息
+                this.$emit('addItem', value)
+                target.value = ''
             }
         }
     }
